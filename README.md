@@ -10,13 +10,13 @@ For details on how to install a podpos CDN node and how to install the `po` comm
 
 #### Step 1: initialize the podcast repository
 
-Start with an empty directory and initialize a new podcast:
+Start with an empty directory and initialize the new podcast:
 
 ```shell
 po new
 ```
 
-This creates the `show.yaml` template, some other files and assignes the podcast its unique GUID. Open the `show.yaml` and change all the CAPITALIZED items.
+This creates the `show.yaml` template, some other files and assignes the podcast its unique GUID. Open the `show.yaml` and change all the CAPITALIZED attributes.
 
 ```yaml
 ---
@@ -62,7 +62,7 @@ Each podcast should have at least one (!) episode, let's create one:
 po template -p aaa94297acfc episode
 ```
 
-The `-p aaa94297acfc` refers to the podcast's unique ID, which links the episode to the show.
+The `-p aaa94297acfc` refers to the podcast's unique ID, which links the podcast episode template to the show template.
 
 ```yaml
 ---
@@ -99,7 +99,7 @@ enclosure:
 
 #### Step 3: build the feed
 
-Each podcast requires an rss feed (`feed.xml` in podops), which is created from the `show.yaml` file and all the episodes.
+Each podcast requires an rss feed (`feed.xml` in podops), which is created from the `show.yaml` file and all the episodes resources.
 
 ```shell
 po build
