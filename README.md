@@ -1,6 +1,8 @@
 # podops.example
 
-This is a canonical example with some episodes showing how to build a podcast feed from simple markdown files.
+This is a canonical example with some episodes showing how to build a podcast feed from simple markdown files using the podops toolchain.
+
+For details on how to install a podpos CDN node and how to install the `po` command line utility, see [https://github.com/podops/podops](https://github.com/podops/podops).
 
 ### TL;DR
 
@@ -8,9 +10,13 @@ This is a canonical example with some episodes showing how to build a podcast fe
 
 #### Step 1: initialize the podcast repository
 
+Start with an empty directory and initialize a new podcast:
+
 ```shell
 po new
 ```
+
+This creates the `show.yaml` template, some other files and assignes the podcast its unique GUID. Open the `show.yaml` and change all the CAPITALIZED items.
 
 ```yaml
 ---
@@ -50,9 +56,13 @@ image:
 
 #### Step 2: create a first episode
 
+Each podcast should have at least one (!) episode, let's create one:
+
 ```shell
 po template -p aaa94297acfc episode
 ```
+
+The `-p aaa94297acfc` refers to the podcast's unique ID, which links the episode to the show.
 
 ```yaml
 ---
@@ -89,6 +99,8 @@ enclosure:
 
 #### Step 3: build the feed
 
+Each podcast requires an rss feed (`feed.xml` in podops), which is created from the `show.yaml` file and all the episodes.
+
 ```shell
 po build
 Sucessfully built podcast 'minimalpodcast'
@@ -96,20 +108,22 @@ Sucessfully built podcast 'minimalpodcast'
 
 #### Step 4: initialize the CDN
 
+Before pubslishing the podcast, it has to be registered:
+
 ```shell
 po init
 ```
 
 #### Step 5: sync the local build with the CDN
 
+Publishing the podcast is done with the `sync` command:
+
 ```shell
 po sync
 Sucessfully synced all resources
 ```
 
-#### validate the feed
-
-Test to see if the `feed.xml` document can be accessed:
+All the podcast assets will be transfered to the CDN. In order to test that the feed can be accessed, request the `feed.xml` document from its canonical URL:
 
 ```shell
 curl https://podops.dev/minimalpodcast/feed
