@@ -19,8 +19,8 @@ apiVersion: v1
 kind: show
 metadata:
     name: NAME
-    guid: 9ab34090a145
-    date: Wed, 16 Feb 2022 14:40:58 +0000
+    guid: aaa94297acfc
+    date: Wed, 16 Feb 2022 09:00:16 +0000
     labels:
         block: "no"
         complete: "no"
@@ -51,19 +51,19 @@ image:
 #### Step 2: create a first episode
 
 ```shell
-po template -p 9ab34090a145 episode
+po template -p aaa94297acfc episode
 ```
 
 ```yaml
 ---
-# episode-29624a9f8b23.yaml
+# episode-6d1048a48504.yaml
 apiVersion: v1
 kind: episode
 metadata:
-    name: episode-29624a9f8b23
-    guid: 29624a9f8b23
-    parent: 9ab34090a145
-    date: Wed, 16 Feb 2022 14:43:30 +0000
+    name: episode-6d1048a48504
+    guid: 6d1048a48504
+    parent: aaa94297acfc
+    date: Wed, 16 Feb 2022 09:30:30 +0000
     labels:
         block: "no"
         episode: "1"
@@ -75,7 +75,7 @@ description:
     summary: EPISODE SUMMARY
     episodeText: EPISODE DESCRIPTION
     link:
-        uri: https://podops.dev/PARENT-NAME/episode-29624a9f8b23
+        uri: https://podops.dev/PARENT-NAME/episode-6d1048a48504
         rel: external
     duration: 1
 image:
@@ -107,3 +107,20 @@ po sync
 Sucessfully synced all resources
 ```
 
+#### validate the feed
+
+Test to see if the `feed.xml` document can be accessed:
+
+```shell
+curl https://podops.dev/minimalpodcast/feed
+```
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+  <channel>
+    <title>podops minimal podcast example</title>
+    <link>https://podops.dev/minimalpodcast</link>
+    ...
+    ...
+````
