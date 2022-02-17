@@ -1,16 +1,40 @@
 # podops.example
 
-This is a canonical example with some episodes showing how to build a podcast feed from simple markdown files using the podops toolchain.
+This is a canonical example with some episodes showing how to build a podcast feed from simple markdown files using the podops.dev toolchain.
 
-For details on how to install a podpos CDN node and how to install the `po` command line utility, see [https://github.com/podops/podops](https://github.com/podops/podops).
+*Note: for details on how to install a podops.dev CDN node and how to install the `po` command line utility, head over to the [https://github.com/podops/podops](https://github.com/podops/podops) repo!*
 
 ### TL;DR
 
 ... or how to build a podcast in 5 steps:
 
+```shell
+cd /the/podcast/location
+
+# prepare the podcast repo
+po new
+<... do some yaml editing>
+
+# create an episode
+po template episode
+<... more yaml editing>
+
+# build the feed
+po build
+
+# register the podcast with the CDN
+po init
+
+# sync the podcast with the CDN
+po sync
+```
+
+
+### Step-by-step example
+
 #### Step 1: initialize the podcast repository
 
-Start with an empty directory and initialize the new podcast:
+Start with an empty directory and initialize the new podcast repository:
 
 ```shell
 po new
